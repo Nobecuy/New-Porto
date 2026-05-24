@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MyPortofolio — Frontend developer in progress. Projects, learning log, and honest skill levels."
+    />
+    <meta name="theme-color" content="#fafafa" />
+    <title>MyPortofolio — Frontend Developer in Progress</title>
+    <script>
+      (() => {
+        try {
+          const stored = localStorage.getItem("theme");
+          const theme =
+            stored === "dark" || stored === "light"
+              ? stored
+              : window.matchMedia &&
+                  window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
