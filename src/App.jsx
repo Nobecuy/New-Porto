@@ -23,6 +23,14 @@ function App() {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    const loader = document.getElementById("app-loader");
+    if (!loader) return;
+    loader.style.opacity = "0";
+    loader.style.visibility = "hidden";
+    window.setTimeout(() => loader.remove(), 220);
+  }, []);
+
   const toggleTheme = () => {
     setTheme((prev) => {
       const next = prev === "dark" ? "light" : "dark";
