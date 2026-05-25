@@ -9,8 +9,7 @@ const Footer = () => {
     { label: "Email", href: socials.emailLink },
     { label: "GitHub", href: socials.github, external: true },
     { label: "LinkedIn", href: socials.linkedin, external: true },
-    { label: "WhatsApp 1", href: socials.whatsappLink, external: true },
-    { label: "WhatsApp 2", href: socials.whatsappLinkAlt, external: true },
+    { label: "WhatsApp", href: socials.whatsappLink, external: true },
   ];
 
   const contactItems = [
@@ -20,15 +19,11 @@ const Footer = () => {
       href: socials.emailLink,
     },
     {
-      label: "WhatsApp 1",
-      value: whatsapp,
-      href: socials.whatsappLink,
-      external: true,
-    },
-    {
-      label: "WhatsApp 2",
-      value: whatsappAlt,
-      href: socials.whatsappLinkAlt,
+      label: "WhatsApp",
+      values: [
+        { value: whatsapp, href: socials.whatsappLink },
+        { value: whatsappAlt, href: socials.whatsappLinkAlt },
+      ],
       external: true,
     },
     {
@@ -65,15 +60,32 @@ const Footer = () => {
                 <p className="text-xs font-medium uppercase tracking-wide text-[var(--color-muted)]">
                   {item.label}
                 </p>
-                <a
-                  href={item.href}
-                  className="mt-0.5 inline-block text-[0.9375rem] font-medium text-[var(--color-fg)] no-underline transition-opacity hover:opacity-60"
-                  {...(item.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                >
-                  {item.value}
-                </a>
+                {"values" in item ? (
+                  <div className="mt-0.5 flex flex-col gap-1">
+                    {item.values.map((entry) => (
+                      <a
+                        key={entry.href}
+                        href={entry.href}
+                        className="inline-block text-[0.9375rem] font-medium text-[var(--color-fg)] no-underline transition-opacity hover:opacity-60"
+                        {...(item.external
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                      >
+                        {entry.value}
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  <a
+                    href={item.href}
+                    className="mt-0.5 inline-block text-[0.9375rem] font-medium text-[var(--color-fg)] no-underline transition-opacity hover:opacity-60"
+                    {...(item.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    {item.value}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
@@ -90,7 +102,7 @@ const Footer = () => {
           <nav className="flex flex-wrap gap-6" aria-label="Social links">
             {links.map((link) => (
               <a
-                key={link.label}
+                key={link.href}
                 href={link.href}
                 className="link-subtle text-sm font-medium"
                 {...(link.external

@@ -14,6 +14,7 @@
       (() => {
         try {
           window.__APP_LOADER_START__ = Date.now();
+          window.__APP_LOADER_MIN_MS__ = 1400;
           const stored = localStorage.getItem("theme");
           const theme =
             stored === "dark" || stored === "light"
@@ -77,6 +78,16 @@
         color: var(--loader-muted);
       }
 
+      #app-loader .percent {
+        font: 600 13px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.04em;
+        color: var(--loader-fg);
+        min-width: 3.25ch;
+        text-align: right;
+      }
+
       @keyframes spin {
         to {
           transform: rotate(360deg);
@@ -97,9 +108,35 @@
     <div id="app-loader" aria-hidden="true">
       <div class="loader-inner">
         <div class="spinner" aria-hidden="true"></div>
-        <span class="label">Loading…</span>
+        <span class="label">Loading</span>
+        <span class="percent" id="app-loader-progress">00%</span>
       </div>
     </div>
+    <script>
+      (() => {
+        const el = document.getElementById("app-loader-progress");
+        if (!el) return;
+
+        const start = window.__APP_LOADER_START__ ?? Date.now();
+        const min = window.__APP_LOADER_MIN_MS__ ?? 1200;
+
+        const format = (n) => String(Math.max(0, Math.min(100, n))).padStart(2, "0") + "%";
+        el.textContent = format(0);
+
+        window.__APP_LOADER_SET_PROGRESS__ = (value) => {
+          el.textContent = format(Math.round(value));
+        };
+
+        const tick = () => {
+          const elapsed = Date.now() - start;
+          const value = Math.min(99, Math.floor((elapsed / min) * 100));
+          el.textContent = format(value);
+          requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
