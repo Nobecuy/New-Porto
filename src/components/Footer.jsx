@@ -1,7 +1,7 @@
 import { portfolioData } from "../data/portfolioData";
 
 const Footer = () => {
-  const { email, whatsapp, socials, name } = portfolioData.profile;
+  const { email, whatsapp, whatsappAlt, socials, name } = portfolioData.profile;
   const { philosophy } = portfolioData.about;
   const { siteName } = portfolioData;
 
@@ -9,7 +9,8 @@ const Footer = () => {
     { label: "Email", href: socials.emailLink },
     { label: "GitHub", href: socials.github, external: true },
     { label: "LinkedIn", href: socials.linkedin, external: true },
-    { label: "WhatsApp", href: socials.whatsappLink, external: true },
+    { label: "WhatsApp 1", href: socials.whatsappLink, external: true },
+    { label: "WhatsApp 2", href: socials.whatsappLinkAlt, external: true },
   ];
 
   const contactItems = [
@@ -19,9 +20,15 @@ const Footer = () => {
       href: socials.emailLink,
     },
     {
-      label: "WhatsApp",
+      label: "WhatsApp 1",
       value: whatsapp,
       href: socials.whatsappLink,
+      external: true,
+    },
+    {
+      label: "WhatsApp 2",
+      value: whatsappAlt,
+      href: socials.whatsappLinkAlt,
       external: true,
     },
     {

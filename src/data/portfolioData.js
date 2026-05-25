@@ -9,11 +9,13 @@ export const portfolioData = {
     status: "Learning & building",
     email: "nobedes32@gmail.com",
     whatsapp: "+62 819-1469-7372",
+    whatsappAlt: "+62 822-4128-8336",
     socials: {
       github: "https://github.com/Nobecuy",
       linkedin: "https://www.linkedin.com/in/ananda-nobe-4871123b3",
       emailLink: "mailto:nobedes32@gmail.com",
       whatsappLink: "https://wa.me/6281914697372",
+      whatsappLinkAlt: "https://wa.me/6282241288336",
     },
   },
 
