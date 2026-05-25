@@ -13,6 +13,7 @@
     <script>
       (() => {
         try {
+          window.__APP_LOADER_START__ = Date.now();
           const stored = localStorage.getItem("theme");
           const theme =
             stored === "dark" || stored === "light"

@@ -26,9 +26,16 @@ function App() {
   useEffect(() => {
     const loader = document.getElementById("app-loader");
     if (!loader) return;
-    loader.style.opacity = "0";
-    loader.style.visibility = "hidden";
-    window.setTimeout(() => loader.remove(), 220);
+    const MIN_VISIBLE_MS = 900;
+    const start = window.__APP_LOADER_START__ ?? Date.now();
+    const elapsed = Date.now() - start;
+    const wait = Math.max(0, MIN_VISIBLE_MS - elapsed);
+
+    window.setTimeout(() => {
+      loader.style.opacity = "0";
+      loader.style.visibility = "hidden";
+      window.setTimeout(() => loader.remove(), 220);
+    }, wait);
   }, []);
 
   const toggleTheme = () => {
