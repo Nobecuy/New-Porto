@@ -9,7 +9,7 @@ const Footer = () => {
     { label: "Email", href: socials.emailLink },
     { label: "GitHub", href: socials.github, external: true },
     { label: "LinkedIn", href: socials.linkedin, external: true },
-    { label: "WhatsApp", href: socials.whatsappLink, external: true },
+    { label: "WhatsApp", href: socials.whatsappLinkAlt, external: true },
   ];
 
   const contactItems = [
