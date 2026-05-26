@@ -19,10 +19,11 @@ const Learning = () => {
 
       <div className="mb-10 flex flex-col gap-6">
         <p className="section-label">Sedang dipelajari</p>
-        {currentlyLearning.map((block) => (
+        {currentlyLearning.map((block, index) => (
           <div
             key={block.topic}
             className="card-surface fade-in-reveal rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 md:p-6"
+            style={{ "--reveal-delay": `${index * 90}ms` }}
           >
             <h3 className="mb-3 text-sm font-semibold text-[var(--color-fg)]">
               {block.topic}

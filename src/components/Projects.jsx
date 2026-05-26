@@ -20,6 +20,7 @@ const ProjectCard = ({ project, index }) => {
       className={`card-surface fade-in-reveal group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-1 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-elevated)] ${
         hasDemo ? "cursor-pointer" : ""
       }`}
+      style={{ "--reveal-delay": `${index * 90}ms` }}
       onClick={hasDemo ? handleClick : undefined}
       onKeyDown={hasDemo ? handleKeyDown : undefined}
       role={hasDemo ? "link" : undefined}

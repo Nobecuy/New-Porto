@@ -74,10 +74,11 @@ const About = () => {
         <div>
           <h3 className="section-label mb-5">What I do</h3>
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-5">
-            {whatIDo.map((item) => (
+            {whatIDo.map((item, index) => (
               <li
                 key={item.title}
                 className="card-surface fade-in-reveal rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+                style={{ "--reveal-delay": `${index * 90}ms` }}
               >
                 <h4 className="mb-2 text-sm font-semibold text-[var(--color-fg)]">
                   {item.title}
