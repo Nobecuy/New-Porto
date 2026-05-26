@@ -10,7 +10,10 @@ const Hero = () => {
       <div className="flex flex-wrap items-center gap-3">
         <span className="section-label">{role}</span>
         <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-xs font-medium text-[var(--color-muted)]">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+          <span
+            className="pulse-dot h-1.5 w-1.5 rounded-full bg-emerald-500 text-emerald-500"
+            aria-hidden="true"
+          />
           {status}
         </span>
       </div>
@@ -39,7 +42,7 @@ const Hero = () => {
         </a>
       </div>
 
-      <p className="pt-4 text-sm text-[var(--color-muted)]">— {name}</p>
+      <p className="float-soft pt-4 text-sm text-[var(--color-muted)]">— {name}</p>
     </section>
   );
 };
