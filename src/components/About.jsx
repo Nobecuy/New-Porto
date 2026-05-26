@@ -58,7 +58,7 @@ const About = () => {
     >
       <header className="mb-10">
         <p className="section-label mb-2">Tentang saya</p>
-        <h2 className="section-title">About Me</h2>
+        <h2 className="section-title tone-on-scroll">About Me</h2>
       </header>
 
       <div className="flex flex-col gap-12">
@@ -77,7 +77,7 @@ const About = () => {
             {whatIDo.map((item) => (
               <li
                 key={item.title}
-                className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+                className="card-surface fade-in-reveal rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
               >
                 <h4 className="mb-2 text-sm font-semibold text-[var(--color-fg)]">
                   {item.title}

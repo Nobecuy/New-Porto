@@ -48,7 +48,7 @@ const Footer = () => {
       <div className="page-wrap py-[var(--spacing-section)]">
         <div className="mb-12 max-w-lg">
           <p className="section-label mb-3">Contact</p>
-          <h2 className="section-title mb-3">Mari terhubung.</h2>
+          <h2 className="section-title tone-on-scroll mb-3">Mari terhubung.</h2>
           <p className="body-text mb-8">
             Terbuka untuk kolaborasi, diskusi belajar, atau sekadar ngobrol soal
             web development.

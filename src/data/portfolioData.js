@@ -8,8 +8,8 @@ export const portfolioData = {
       "Membangun antarmuka web yang responsif dan fungsional, sambil terus mengeksplorasi teknologi modern.",
     status: "Learning & building",
     email: "nobedes32@gmail.com",
-    whatsapp: "+62 819-1469-7372",
-    whatsappAlt: "+62 822-4128-8336",
+    whatsapp: "+62 822-4128-8336",
+    whatsappAlt: "+62 819-1469-7372",
     socials: {
       github: "https://github.com/Nobecuy",
       linkedin: "https://www.linkedin.com/in/ananda-nobe-4871123b3",

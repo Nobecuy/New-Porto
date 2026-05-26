@@ -17,7 +17,7 @@ const ProjectCard = ({ project, index }) => {
 
   return (
     <article
-      className={`group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-1 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-elevated)] ${
+      className={`card-surface fade-in-reveal group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-1 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-elevated)] ${
         hasDemo ? "cursor-pointer" : ""
       }`}
       onClick={hasDemo ? handleClick : undefined}
@@ -42,7 +42,7 @@ const ProjectCard = ({ project, index }) => {
             <span className="text-xs font-medium tabular-nums text-[var(--color-muted)]">
               {String(index + 1).padStart(2, "0")} · {project.year}
             </span>
-            <h3 className="text-lg font-semibold tracking-tight text-[var(--color-fg)] transition-colors group-hover:text-[var(--color-accent)]">
+            <h3 className="tone-on-scroll text-lg font-semibold tracking-tight transition-colors group-hover:text-[var(--color-accent)]">
               {project.title}
             </h3>
           </div>
@@ -75,7 +75,7 @@ const Projects = () => {
       <header className="mb-10 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="section-label mb-2">Selected work</p>
-          <h2 className="section-title">Projects</h2>
+          <h2 className="section-title tone-on-scroll">Projects</h2>
         </div>
         <p className="body-text max-w-xs text-sm sm:text-right">
           Project belajar & eksperimen — setiap satu adalah catatan pertumbuhan.

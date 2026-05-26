@@ -150,6 +150,9 @@
   }
 
   .btn-primary {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -169,10 +172,29 @@
       box-shadow 0.2s ease;
   }
 
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: radial-gradient(
+      120% 90% at 20% 0%,
+      var(--color-accent-muted),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: -1;
+  }
+
   .btn-primary:hover {
     opacity: 0.88;
     transform: translateY(-1px);
     box-shadow: var(--shadow-elevated);
+  }
+
+  .btn-primary:hover::before {
+    opacity: 0.85;
   }
 
   .btn-primary:active {
@@ -181,6 +203,9 @@
   }
 
   .btn-ghost {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -200,14 +225,64 @@
       transform 0.2s ease;
   }
 
+  .btn-ghost::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: radial-gradient(
+      120% 90% at 20% 0%,
+      var(--color-accent-muted),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: -1;
+  }
+
   .btn-ghost:hover {
     background-color: var(--color-hover);
     border-color: var(--color-border-hover);
     transform: translateY(-1px);
   }
 
+  .btn-ghost:hover::before {
+    opacity: 0.7;
+  }
+
   .btn-ghost:active {
     transform: translateY(0) scale(0.99);
+  }
+
+  .card-surface {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .card-surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      120% 90% at 20% 0%,
+      var(--color-accent-muted),
+      transparent 62%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .card-surface > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-surface:hover::before {
+    opacity: 0.9;
   }
 
   .tag {
@@ -240,6 +315,15 @@
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
+  }
+
+  .fade-in-reveal .tone-on-scroll {
+    color: var(--color-muted);
+    transition: color 0.6s ease;
+  }
+
+  .fade-in-reveal.reveal-visible .tone-on-scroll {
+    color: var(--color-fg);
   }
 
   .nav-link {

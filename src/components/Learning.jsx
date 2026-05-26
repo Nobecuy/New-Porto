@@ -10,7 +10,7 @@ const Learning = () => {
     >
       <header className="mb-10">
         <p className="section-label mb-2">Learning log</p>
-        <h2 className="section-title">Current focus</h2>
+        <h2 className="section-title tone-on-scroll">Current focus</h2>
         <p className="mt-3 max-w-prose body-text">
           Sedang fokus belajar — transparan soal apa yang dikuasai dan apa yang masih
           dalam proses.
@@ -22,7 +22,7 @@ const Learning = () => {
         {currentlyLearning.map((block) => (
           <div
             key={block.topic}
-            className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 md:p-6"
+            className="card-surface fade-in-reveal rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 md:p-6"
           >
             <h3 className="mb-3 text-sm font-semibold text-[var(--color-fg)]">
               {block.topic}

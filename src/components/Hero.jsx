@@ -16,7 +16,7 @@ const Hero = () => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <h1 className="max-w-[22ch] text-[clamp(2rem,5.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-[var(--color-fg)]">
+        <h1 className="tone-on-scroll max-w-[22ch] text-[clamp(2rem,5.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
           {tagline}
         </h1>
         <div className="flex max-w-prose flex-col gap-3">
