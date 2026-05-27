@@ -9,6 +9,26 @@ import { Analytics } from "@vercel/analytics/react";
 
 const THEME_STORAGE_KEY = "theme";
 
+// ⬅️ TAMBAHAN: Component counter kecil dengan green pulsing dot & glassmorphism
+function ViewCounter({ views, error }) {
+  if (error) return null;
+
+  return (
+    <div className="fade-in-reveal reveal-visible inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-elevated)] backdrop-blur-md transition-all duration-300 hover:border-[var(--color-border-hover)] hover:scale-[1.02]">
+      <span className="relative flex h-2 w-2">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+      </span>
+      <span className="text-xs font-medium text-[var(--color-muted)] tracking-wide">
+        <span className="text-[var(--color-fg)] font-semibold tabular-nums">
+          {views === null ? "—" : views.toLocaleString("id-ID")}
+        </span>{" "}
+        visitors
+      </span>
+    </div>
+  );
+}
+
 function App() {
   const [theme, setTheme] = useState(() => {
     if (typeof window === "undefined") return "light";
@@ -21,6 +41,50 @@ function App() {
       : "light";
   });
   const [activeSection, setActiveSection] = useState("");
+  const [views, setViews] = useState(null);
+  const [viewsError, setViewsError] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const isLocal = typeof window !== "undefined" && 
+      (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+
+    const shouldIncrement =
+      typeof window !== "undefined" && !window.sessionStorage.getItem("counted_view");
+
+    const url = `/api/views?increment=${shouldIncrement ? "1" : "0"}`;
+
+    fetch(url)
+      .then((res) => {
+        if (!res.ok) throw new Error("API error response");
+        return res.json();
+      })
+      .then((data) => {
+        if (cancelled) return;
+        if (typeof data?.views === "number") {
+          setViews(data.views);
+          setViewsError(false);
+          if (shouldIncrement) window.sessionStorage.setItem("counted_view", "1");
+        } else {
+          throw new Error("Invalid response format");
+        }
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        if (isLocal) {
+          // Fallback ke mock views jika local development agar UI tetap bisa dilihat
+          setViews(1280); 
+          setViewsError(false);
+          console.log("Local Dev: Menggunakan mock views karena Vercel KV tidak terdeteksi di localhost.", err);
+        } else {
+          setViewsError(true);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -102,7 +166,13 @@ function App() {
         <Learning />
         <About />
       </main>
-      <Footer />
+
+      {/* ⬅️ TAMBAHAN: Taruh counter di sini */}
+      <div className="py-6 flex justify-center items-center">
+        <ViewCounter views={views} error={viewsError} />
+      </div>
+
+      <Footer views={views} viewsError={viewsError} />
       <Analytics />
     </div>
   );

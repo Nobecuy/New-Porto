@@ -1,42 +1,9 @@
-import { useEffect, useState } from "react";
 import { portfolioData } from "../data/portfolioData";
 
-const Footer = () => {
+const Footer = ({ views = null, viewsError = false }) => {
   const { email, whatsapp, whatsappAlt, socials, name } = portfolioData.profile;
   const { philosophy } = portfolioData.about;
   const { siteName } = portfolioData;
-  const [views, setViews] = useState(null);
-  const [viewsError, setViewsError] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    const shouldIncrement =
-      typeof window !== "undefined" && !window.sessionStorage.getItem("counted_view");
-
-    const url = `/api/views?increment=${shouldIncrement ? "1" : "0"}`;
-
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        if (cancelled) return;
-        if (typeof data?.views === "number") {
-          setViews(data.views);
-          setViewsError(false);
-          if (shouldIncrement) window.sessionStorage.setItem("counted_view", "1");
-        } else {
-          setViewsError(true);
-        }
-      })
-      .catch(() => {
-        if (cancelled) return;
-        setViewsError(true);
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   const links = [
     { label: "Email", href: socials.emailLink },
