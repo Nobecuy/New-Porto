@@ -5,6 +5,7 @@ import Projects from "./components/Projects";
 import Learning from "./components/Learning";
 import About from "./components/About";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const THEME_STORAGE_KEY = "theme";
 
@@ -15,7 +16,9 @@ function App() {
     const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
     if (stored === "light" || stored === "dark") return stored;
 
-    return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ? "dark" : "light";
+    return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches
+      ? "dark"
+      : "light";
   });
   const [activeSection, setActiveSection] = useState("");
 
@@ -70,7 +73,7 @@ function App() {
           }
         });
       },
-      { threshold: 0.06, rootMargin: "0px 0px -32px 0px" }
+      { threshold: 0.06, rootMargin: "0px 0px -32px 0px" },
     );
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -100,6 +103,7 @@ function App() {
         <About />
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }

@@ -1,9 +1,42 @@
+import { useEffect, useState } from "react";
 import { portfolioData } from "../data/portfolioData";
 
 const Footer = () => {
   const { email, whatsapp, whatsappAlt, socials, name } = portfolioData.profile;
   const { philosophy } = portfolioData.about;
   const { siteName } = portfolioData;
+  const [views, setViews] = useState(null);
+  const [viewsError, setViewsError] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const shouldIncrement =
+      typeof window !== "undefined" && !window.sessionStorage.getItem("counted_view");
+
+    const url = `/api/views?increment=${shouldIncrement ? "1" : "0"}`;
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        if (cancelled) return;
+        if (typeof data?.views === "number") {
+          setViews(data.views);
+          setViewsError(false);
+          if (shouldIncrement) window.sessionStorage.setItem("counted_view", "1");
+        } else {
+          setViewsError(true);
+        }
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setViewsError(true);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const links = [
     { label: "Email", href: socials.emailLink },
@@ -96,9 +129,19 @@ const Footer = () => {
         </p>
 
         <div className="flex flex-col gap-4 border-t border-[var(--color-border)] pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-[var(--color-muted)]">
-            © {new Date().getFullYear()} {name} · {siteName}
-          </p>
+          <div className="flex flex-col gap-1">
+            <p className="text-sm text-[var(--color-muted)]">
+              © {new Date().getFullYear()} {name} · {siteName}
+            </p>
+            {!viewsError && (
+              <p className="text-xs text-[var(--color-muted)]">
+                Views:{" "}
+                <span className="tabular-nums text-[var(--color-fg)]">
+                  {views === null ? "—" : views.toLocaleString("id-ID")}
+                </span>
+              </p>
+            )}
+          </div>
           <nav className="flex flex-wrap gap-6" aria-label="Social links">
             {links.map((link) => (
               <a
