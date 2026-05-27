@@ -6,6 +6,7 @@ const navLinks = [
   { label: "Work", href: "#projects", id: "projects" },
   { label: "Focus", href: "#learning", id: "learning" },
   { label: "About", href: "#about", id: "about" },
+  { label: "Stats", href: "#stats", id: "stats" },
 ];
 
 const ThemeToggle = ({ theme, onToggle }) => (
