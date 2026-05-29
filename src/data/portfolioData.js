@@ -97,11 +97,7 @@ export const portfolioData = {
         items: ["Async programming", "Fetch API", "Modular code"],
       },
     ],
-    nextGoals: [
-      "Next.js fundamentals",
-      "Backend basics (Node.js / Express)",
-      "Database (PostgreSQL / MongoDB)",
-    ],
+    nextGoals: ["Blazor", ".Net", "Database (PostgreSQL / MongoDB)"],
   },
 
   projects: [

@@ -83,9 +83,20 @@ function App() {
 
     window.setTimeout(() => {
       window.__APP_LOADER_SET_PROGRESS__?.(100);
-      loader.style.opacity = "0";
-      loader.style.visibility = "hidden";
-      window.setTimeout(() => loader.remove(), 220);
+      
+      // Step 1: Fade out inner spinner
+      loader.classList.add("fade-inner");
+      
+      // Step 2: Slide up the background panel and reveal main app
+      window.setTimeout(() => {
+        loader.classList.add("slide-up");
+        document.documentElement.classList.add("app-revealed");
+        
+        // Step 3: Remove loader from DOM after transition completes
+        window.setTimeout(() => {
+          loader.remove();
+        }, 500);
+      }, 200);
     }, wait);
   }, []);
 

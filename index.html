@@ -50,7 +50,18 @@
         background: var(--loader-bg);
         color: var(--loader-fg);
         z-index: 9999;
-        transition: opacity 0.2s ease, visibility 0.2s ease;
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      #app-loader.fade-inner .loader-inner {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      #app-loader.slide-up {
+        opacity: 0;
+        transform: translateY(-16px);
+        pointer-events: none;
       }
 
       #app-loader .loader-inner {
@@ -61,6 +72,7 @@
         border: 1px solid var(--loader-border);
         border-radius: 9999px;
         background: transparent;
+        transition: opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
       }
 
       #app-loader .spinner {

@@ -6,8 +6,8 @@ const Hero = () => {
   const { bio, focus } = portfolioData.about;
 
   return (
-    <section className="fade-in-reveal flex flex-col gap-6 pb-[var(--spacing-section)] pt-16 md:pt-20">
-      <div className="flex flex-wrap items-center gap-3">
+    <section className="flex flex-col gap-6 pb-[var(--spacing-section)] pt-16 md:pt-20">
+      <div className="reveal-stagger-item delay-100 flex flex-wrap items-center gap-3">
         <span className="section-label">{role}</span>
         <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-xs font-medium text-[var(--color-muted)]">
           <span
@@ -18,8 +18,8 @@ const Hero = () => {
         </span>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <h1 className="tone-on-scroll max-w-[22ch] text-[clamp(2rem,5.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
+      <div className="reveal-stagger-item delay-200 flex flex-col gap-4">
+        <h1 className="max-w-[22ch] text-[clamp(2rem,5.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-[var(--color-fg)]">
           {tagline}
         </h1>
         <div className="flex max-w-prose flex-col gap-3">
@@ -32,7 +32,7 @@ const Hero = () => {
         <p className="max-w-prose text-sm text-[var(--color-muted)]">{focus}</p>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 pt-1">
+      <div className="reveal-stagger-item delay-300 flex flex-wrap items-center gap-3 pt-1">
         <a href="#projects" className="btn-primary">
           Lihat project
         </a>
@@ -42,7 +42,7 @@ const Hero = () => {
         </a>
       </div>
 
-      <p className="float-soft pt-4 text-sm text-[var(--color-muted)]">— {name}</p>
+      <p className="reveal-stagger-item delay-400 float-soft pt-4 text-sm text-[var(--color-muted)]">— {name}</p>
     </section>
   );
 };
