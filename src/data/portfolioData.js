@@ -112,7 +112,21 @@ export const portfolioData = {
       github: "#",
       demo: "https://pa-arsitek.com/",
       featured: true,
-      year: "2025",
+      year: "2026",
+    },
+
+    {
+      id: 1,
+      slug: "KnitHouse",
+      title: "KnitHouse",
+      description:
+        "Website portofolio KnitHouse - galeri, about, dan alur kontak.",
+      tags: ["React", "Vite", "Tailwind"],
+      image: "/Mock1.jpg",
+      github: "#",
+      demo: "https://pa-arsitek.com/",
+      featured: true,
+      year: "2026",
     },
   ],
 };
