@@ -124,7 +124,7 @@ export const portfolioData = {
       tags: ["React", "Vite", "Tailwind"],
       image: "/Mock1.jpg",
       github: "#",
-      demo: "https://pa-arsitek.com/",
+      demo: "https://knit-house.vercel.app/",
       featured: true,
       year: "2026",
     },
