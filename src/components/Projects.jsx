@@ -26,7 +26,7 @@ const ProjectCard = ({ project, index, cardRef }) => {
   return (
     <article
       ref={cardRef}
-      className={`project-card card-surface rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-1 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-elevated)] ${
+      className={`project-card card-surface group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-1 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[var(--color-border-hover)] hover:shadow-[var(--shadow-elevated)] ${
         hasDemo ? "cursor-pointer" : ""
       }`}
       onClick={hasDemo ? handleClick : undefined}
