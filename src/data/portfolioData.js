@@ -128,5 +128,19 @@ export const portfolioData = {
       featured: true,
       year: "2026",
     },
+
+    {
+      id: 2,
+      slug: "voyage-luxe",
+      title: "Voyage Luxe",
+      description:
+        "Landing page travel premium dengan desain elegant — hero section, destinations, dan booking experience.",
+      tags: ["React", "Vite", "Tailwind", "GSAP"],
+      image: "/Mock2.jpg",
+      github: "#",
+      demo: "https://web-travel-kappa.vercel.app/",
+      featured: true,
+      year: "2026",
+    },
   ],
 };
